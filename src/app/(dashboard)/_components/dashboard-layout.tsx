@@ -27,6 +27,7 @@ import {
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Avatar as Avtar } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 type RouteGroupType = {
   group: string;
   items: {
@@ -148,7 +149,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </Collapsible.Trigger>
       </Collapsible.Root>
       <div className="flex">
-        {/* ThemeToggle */}
+        <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
