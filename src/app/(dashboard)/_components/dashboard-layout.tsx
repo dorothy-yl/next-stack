@@ -3,14 +3,30 @@
 import { Button } from "@/components/ui/button";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { ReactNode, useState } from "react";
-import { ChevronDown, Menu } from "lucide-react";
-import { ChevronLeft } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { Apple, Boxes, Ruler, Utensils, ChevronRight } from "lucide-react";
+import {
+  Apple,
+  Boxes,
+  Ruler,
+  Utensils,
+  ChevronLeft,
+  ChevronDown,
+  Menu,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
+import { Avatar as Avtar } from "@/components/ui/avatar";
+import { LogOut } from "lucide-react";
 type RouteGroupType = {
   group: string;
   items: {
@@ -134,9 +150,43 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       <div className="flex">
         {/* ThemeToggle */}
         <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="flex h-9 items-center gap-2 px-2"
+            >
+              <Avatar className="size-8">
+                <AvatarFallback>A</AvatarFallback>
+              </Avatar>
+              <span className="hidden md:inline">Admin</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
 
+            <div className="flex items-center gap-3 px-2 py-1.5">
+              <Avtar className="size-10">
+                <AvatarFallback>A</AvatarFallback>
+              </Avtar>
+              <div>
+                <p className="text-sm font-medium">Admin</p>
+                <p className="text-muted-foreground text-xs">admin@text.com</p>
+              </div>
+            </div>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+            onClick={() => {
+              //logout
+            }}
+            variant="destructive"
+            >
+              <LogOut className="w-4 h-4" />Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
       <Collapsible.Root
         className="fixed left-0 top-0 z-20 h-dvh"
         open={open}
