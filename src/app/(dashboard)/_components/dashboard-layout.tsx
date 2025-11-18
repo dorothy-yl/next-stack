@@ -140,6 +140,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [open, setOpen] = useState(false);
 
   return (
+    <div className="flex">
     <div className="bg-background fixed z-10 flex h-13 w-screen items-center justify-between border px-2">
       <Collapsible.Root className="h-full" open={open} onOpenChange={setOpen}>
         <Collapsible.Trigger className="m-2" asChild>
@@ -187,7 +188,9 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+    </div>
 
+    
       <Collapsible.Root
         className="fixed left-0 top-0 z-20 h-dvh"
         open={open}
@@ -223,6 +226,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         {children}
       </main>
     </div>
+    
   );
 };
 export default DashboardLayout;
