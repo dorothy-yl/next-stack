@@ -1,4 +1,8 @@
+import {CategoryCards}  from "./_components/category-cards";
+
 const Page = () => {
-    return <div>Admin</div>
+    return <div>
+        <CategoryCards/>
+    </div>
 }
 export default Page;
