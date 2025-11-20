@@ -4,41 +4,45 @@ import { useDeleteCategory } from "../_services/use-category-mutations";
 import { useCategories } from "../_services/use-category-queries";
 import { Button } from "@/components/ui/button";
 import { Edit, Trash2 } from "lucide-react";
+import { alert } from "@/lib/use-global-store";
 
 const CategoryCards = () => {
-    const categoriesQuery = useCategories();
-    const deleteCategoryMutation = useDeleteCategory();
+  const categoriesQuery = useCategories();
+  const deleteCategoryMutation = useDeleteCategory();
 
-return <div className="grid grid-cols-4 gap-2">
-    {categoriesQuery.data?.map((item)=>(
-        <div className="bg-white flex flex-col justify-between gap-3 rounded-lg p-6 shadow-md 
-        key={item.id}">
-<p className="truncate">{item.name}</p>
-<div className="flex gap-1">
-    <Button
-    className="size-6"
-    variant="ghost"
-    size="icon"
-    onClick={()=>{
-
-    }}
-    >
-        <Edit/>
-    </Button>
-    <Button
-    className="size-6"
-    variant="ghost"
-    size="icon"
-    onClick={()=>{
-        deleteCategoryMutation.mutate(item.id);
-    }}
-    >
-        <Trash2/>
-    </Button>
-</div>
+  return (
+    <div className="grid grid-cols-4 gap-2">
+      {categoriesQuery.data?.map((item) => (
+        <div
+          className="bg-white flex flex-col justify-between gap-3 rounded-lg p-6 shadow-md 
+        key={item.id}"
+        >
+          <p className="truncate">{item.name}</p>
+          <div className="flex gap-1">
+            <Button
+              className="size-6"
+              variant="ghost"
+              size="icon"
+              onClick={() => {}}
+            >
+              <Edit />
+            </Button>
+            <Button
+              className="size-6"
+              variant="ghost"
+              size="icon"
+              onClick={() => {
+                alert({
+                  onConfirm: () => deleteCategoryMutation.mutate(item.id),
+                });
+              }}
+            >
+              <Trash2 />
+            </Button>
+          </div>
         </div>
-    ))}
-</div>
-
-}
-export  {CategoryCards};
+      ))}
+    </div>
+  );
+};
+export { CategoryCards };
