@@ -28,6 +28,10 @@ import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import { Avatar as Avtar } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { z } from "zod";
+import { customErrorMap } from "@/lib/customErrorMap";
+z.setErrorMap(customErrorMap);
+
 type RouteGroupType = {
   group: string;
   items: {
